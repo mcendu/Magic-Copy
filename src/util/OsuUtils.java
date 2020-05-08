@@ -527,7 +527,7 @@ public class OsuUtils {
 		ArrayList<HitObject> wavHS = new ArrayList<HitObject>();
 		ArrayList<HitObject> defaultHS = new ArrayList<HitObject>();
 		for (HitObject ho : hitObjects){
-			if (ho.isWAV_HS()){
+			if (ho.usesCustomSampleFile()){
 				wavHS.add(ho.clone());
 			} else{
 				if (ho.getWhistleFinishClap()!=0){
@@ -563,7 +563,7 @@ public class OsuUtils {
 	public static int getDefaultHSChordSizeForTime(ArrayList<HitObject> hitObjects, long startTime){
 		int size = 0;
 		for (HitObject ho : hitObjects){
-			if (ho.getStartTime()==startTime && ho.getWhistleFinishClap()!= 0 && !ho.isWAV_HS()){
+			if (ho.getStartTime()==startTime && ho.getWhistleFinishClap()!= 0 && !ho.usesCustomSampleFile()){
 				size++;
 			}
 		}
