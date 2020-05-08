@@ -187,7 +187,7 @@ public class HitObject {
 	
 	public Sample toSample(){
 		Sample s;
-			if (!hitSound.isEmpty()){
+			if (!hitSound.isEmpty()) {
 				String sampleSound = hitSound;
 				int effectiveSampleSet;
 
@@ -197,44 +197,47 @@ public class HitObject {
 					effectiveSampleSet = additionSampleSet;
 
 				switch(effectiveSampleSet){
-				case 1:
-					sampleSound = "normal-";
-					break;
+					case SAMPLESET_NORMAL:
+						sampleSound = "normal-";
+						break;
 					
-				case 2:
-					sampleSound = "soft-";
-					break;
+					case SAMPLESET_SOFT:
+						sampleSound = "soft-";
+						break;
 					
-				case 3:
-					sampleSound = "drum-";
-					break;
+					case SAMPLESET_DRUM:
+						sampleSound = "drum-";
+						break;
 				}
 
 				switch(additionFlags){
-				case HITNORMAL:
-					sampleSound+="hitnormal";
-					break;
-				case HITWHISTLE:
-					sampleSound+="hitwhistle";
-					break;
-				case HITFINISH:
-					sampleSound+="hitfinish";
-					break;
-				case HITCLAP:
-					sampleSound+="hitclap";
+					case HITNORMAL:
+						sampleSound+="hitnormal";
+						break;
+					case HITWHISTLE:
+						sampleSound+="hitwhistle";
+						break;
+					case HITFINISH:
+						sampleSound+="hitfinish";
+						break;
+					case HITCLAP:
+						sampleSound+="hitclap";
+						break;
 				}
-				
+
 				String id = "";
-				if (setID>1){
-					id+=setID;
+
+				if (setID > 1){
+					id += setID;
 				}
+
 				sampleSound+=id+".wav";
 				s = new Sample(startTime,sampleSound,timingPointVolume);
 				System.out.println(timingPointVolume);
 			} else {
 				s = new Sample(startTime,hitSound,volume);
 			}
-			
+
 			s.addQuotesToHS();
 			if (!s.toString().contains(".wav")){
 				System.err.println("Failed to convert HitObject to Sample");
@@ -244,9 +247,7 @@ public class HitObject {
 			}
 			return s;
 	}
-	
-	
-	
+
 	@Override
 	public String toString() {
 		if (type==1) {
