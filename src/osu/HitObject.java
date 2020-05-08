@@ -205,7 +205,7 @@ public class HitObject {
 			else
 				effectiveSampleSet = additionSampleSet;
 
-			switch(effectiveSampleSet){
+			switch (effectiveSampleSet){
 				case SAMPLESET_NORMAL:
 					sampleSound = "normal-";
 					break;
@@ -219,7 +219,7 @@ public class HitObject {
 					break;
 			}
 
-			switch(additionFlags){
+			switch (additionFlags){
 				case HITNORMAL:
 					sampleSound+="hitnormal";
 					break;
@@ -236,7 +236,7 @@ public class HitObject {
 
 			String id = "";
 
-			if (setID > 1){
+			if (setID > 1) {
 				id += setID;
 			}
 
