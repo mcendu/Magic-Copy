@@ -135,8 +135,17 @@ public class HitObject {
 		setVolume(0);
 		return this;
 	}
-	
+
+	/**
+	 * Check if a custom sample file is in use.
+	 */
 	public boolean usesCustomSampleFile(){
+		/*
+		We cannot expect what names the user would use; while it might
+		look simple to add a ".ogg" check, in the future someone would come
+		with hitsounds in ".oga" or even ".flac" (when lazer replaces stable).
+		If the field is blank there is definitely no custom samples, however.
+		*/
 		return !hitSound.isBlank();
 	}
 	
@@ -187,65 +196,67 @@ public class HitObject {
 	
 	public Sample toSample(){
 		Sample s;
-			if (!hitSound.isEmpty()) {
-				String sampleSound = hitSound;
-				int effectiveSampleSet;
+		if (!usesCustomSampleFile()) {
+			String sampleSound = hitSound;
+			int effectiveSampleSet;
 
-				if (additionFlags == SAMPLESET_AUTO)
-					effectiveSampleSet = timingPointSampleSet;
-				else
-					effectiveSampleSet = additionSampleSet;
+			if (additionFlags == SAMPLESET_AUTO)
+				effectiveSampleSet = timingPointSampleSet;
+			else
+				effectiveSampleSet = additionSampleSet;
 
-				switch(effectiveSampleSet){
-					case SAMPLESET_NORMAL:
-						sampleSound = "normal-";
-						break;
-					
-					case SAMPLESET_SOFT:
-						sampleSound = "soft-";
-						break;
-					
-					case SAMPLESET_DRUM:
-						sampleSound = "drum-";
-						break;
-				}
-
-				switch(additionFlags){
-					case HITNORMAL:
-						sampleSound+="hitnormal";
-						break;
-					case HITWHISTLE:
-						sampleSound+="hitwhistle";
-						break;
-					case HITFINISH:
-						sampleSound+="hitfinish";
-						break;
-					case HITCLAP:
-						sampleSound+="hitclap";
-						break;
-				}
-
-				String id = "";
-
-				if (setID > 1){
-					id += setID;
-				}
-
-				sampleSound+=id+".wav";
-				s = new Sample(startTime,sampleSound,timingPointVolume);
-				System.out.println(timingPointVolume);
-			} else {
-				s = new Sample(startTime,hitSound,volume);
+			switch(effectiveSampleSet){
+				case SAMPLESET_NORMAL:
+					sampleSound = "normal-";
+					break;
+				
+				case SAMPLESET_SOFT:
+					sampleSound = "soft-";
+					break;
+				
+				case SAMPLESET_DRUM:
+					sampleSound = "drum-";
+					break;
 			}
 
-			s.addQuotesToHS();
-			if (!s.toString().contains(".wav")){
-				System.err.println("Failed to convert HitObject to Sample");
-				System.err.println(toString());
-				System.err.println(s.toString());
-				System.exit(-1);
+			switch(additionFlags){
+				case HITNORMAL:
+					sampleSound+="hitnormal";
+					break;
+				case HITWHISTLE:
+					sampleSound+="hitwhistle";
+					break;
+				case HITFINISH:
+					sampleSound+="hitfinish";
+					break;
+				case HITCLAP:
+					sampleSound+="hitclap";
+					break;
 			}
-			return s;
+
+			String id = "";
+
+			if (setID > 1){
+				id += setID;
+			}
+
+			// Assume the normal hitsounds are wav files. This is
+			// the format in which DH & Co. provide their hitsounds.
+			sampleSound += id + ".wav";
+			s = new Sample(startTime,sampleSound,timingPointVolume);
+			System.out.println(timingPointVolume);
+		} else {
+			s = new Sample(startTime,hitSound,volume);
+		}
+
+		s.addQuotesToHS();
+		if (!s.toString().contains(".wav")){
+			System.err.println("Failed to convert HitObject to Sample");
+			System.err.println(toString());
+			System.err.println(s.toString());
+			System.exit(-1);
+		}
+		return s;
 	}
 
 	@Override
