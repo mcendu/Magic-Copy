@@ -185,60 +185,49 @@ public class HitObject {
 	public Sample toSample(){
 		Sample s;
 			if (!hitSound.contains(".wav")){
-				
+				String sampleSound = hitSound;
+				int effectiveSampleSet;
 
-				
-				switch(timingPointSampleSet){
+				if (whistle_finish_clap == HITNORMAL)
+					effectiveSampleSet = timingPointSampleSet;
+				else
+					effectiveSampleSet = addition;
+
+				switch(effectiveSampleSet){
 				
 				case 1:
-					hitSound = "normal-";
+					sampleSound = "normal-";
 					break;
 					
 				case 2:
-					hitSound = "soft-";
+					sampleSound = "soft-";
 					break;
 					
 				case 3:
-					hitSound = "drum-";
+					sampleSound = "drum-";
 					break;
 				}
-				
-				if (whistle_finish_clap != HITNORMAL)
-				switch(addition){
-				case 1:
-					hitSound = "normal-";
-					break;
-					
-				case 2:
-					hitSound = "soft-";
-					break;
-					
-				case 3:
-					hitSound = "drum-";
-					break;
-				}
-		
-				
+
 				switch(whistle_finish_clap){
 				case HITNORMAL:
-					hitSound+="hitnormal";
+					sampleSound+="hitnormal";
 					break;
 				case HITWHISTLE:
-					hitSound+="hitwhistle";
+					sampleSound+="hitwhistle";
 					break;
 				case HITFINISH:
-					hitSound+="hitfinish";
+					sampleSound+="hitfinish";
 					break;
 				case HITCLAP:
-					hitSound+="hitclap";
+					sampleSound+="hitclap";
 				}
 				
 				String id = "";
 				if (setID>1){
 					id+=setID;
 				}
-				hitSound+=id+".wav";
-				s = new Sample(startTime,hitSound,timingPointVolume);
+				sampleSound+=id+".wav";
+				s = new Sample(startTime,sampleSound,timingPointVolume);
 				System.out.println(timingPointVolume);
 			} else {
 				s = new Sample(startTime,hitSound,volume);
