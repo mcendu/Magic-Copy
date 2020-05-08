@@ -1,4 +1,4 @@
-package osu;
+package MagicCopy.osu;
 import java.util.Comparator;
 
 public class HitObject {
@@ -144,9 +144,9 @@ public class HitObject {
 		We cannot expect what names the user would use; while it might
 		look simple to add a ".ogg" check, in the future someone would come
 		with hitsounds in ".oga" or even ".flac" (when lazer replaces stable).
-		If the field is blank there is definitely no custom samples, however.
+		If the field is empty there is definitely no custom samples, however.
 		*/
-		return !hitSound.isBlank();
+		return !hitSound.isEmpty();
 	}
 	
 	public void setWhislteFinishClap(int type){

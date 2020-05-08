@@ -1,4 +1,4 @@
-package util;
+package MagicCopy.util;
 
 import java.awt.Dimension;
 import java.io.BufferedReader;
@@ -22,9 +22,9 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import osu.HitObject;
-import osu.Sample;
-import osu.Timing;
+import MagicCopy.osu.HitObject;
+import MagicCopy.osu.Sample;
+import MagicCopy.osu.Timing;
 
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
@@ -315,7 +315,7 @@ public class OsuUtils {
 	
 	public static File getOsuFile(String path){
 		File f = null;
-		FileFilter filter = new FileNameExtensionFilter("OSU file", "osu");
+		FileFilter filter = new FileNameExtensionFilter("OSU file", "MagicCopy/osu");
  	   	final JFileChooser jFileChooser1 = new javax.swing.JFileChooser(path);
         jFileChooser1.addChoosableFileFilter(filter);
         jFileChooser1.setFileFilter(filter);

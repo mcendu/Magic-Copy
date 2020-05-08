@@ -1,4 +1,4 @@
-package main;
+package MagicCopy.main;
 import java.awt.EventQueue;
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,7 +20,7 @@ import javax.swing.JButton;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import util.OsuUtils;
+import MagicCopy.util.OsuUtils;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -225,7 +225,7 @@ public class GUI extends JFrame {
 
 	private File getOsuFile(){
 		File f = null;
-		FileFilter filter = new FileNameExtensionFilter("OSU file", "osu");
+		FileFilter filter = new FileNameExtensionFilter("OSU file", "MagicCopy/osu");
  	   	final JFileChooser jFileChooser1 = new javax.swing.JFileChooser(defaultPath);
         jFileChooser1.addChoosableFileFilter(filter);
         jFileChooser1.setFileFilter(filter);

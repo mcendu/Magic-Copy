@@ -1,4 +1,4 @@
-package main;
+package MagicCopy.main;
 
 import java.io.File;
 
@@ -8,10 +8,10 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import osu.HitObject;
-import osu.Sample;
-import osu.Timing;
-import util.OsuUtils;
+import MagicCopy.osu.HitObject;
+import MagicCopy.osu.Sample;
+import MagicCopy.osu.Timing;
+import MagicCopy.util.OsuUtils;
 
 public class MagicCopyMania implements Runnable {
 

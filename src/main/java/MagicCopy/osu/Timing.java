@@ -1,4 +1,4 @@
-package osu;
+package MagicCopy.osu;
 import java.util.Comparator;
 
 

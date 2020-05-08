@@ -1,1 +1,9 @@
+# output by DH's build system
 /bin/
+# output by gradle
+/build/
+/.gradle/
+# gradle wrappers
+/gradlew
+/gradlew.bat
+/gradle/wrapper/
