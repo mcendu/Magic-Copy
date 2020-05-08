@@ -23,4 +23,5 @@ repositories {
 dependencies {
 }
 
-mainClassName = "main.GUI"
+sourceCompatibility = "1.8"
+mainClassName = "MagicCopy.main.GUI"

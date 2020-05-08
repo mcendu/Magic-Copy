@@ -250,7 +250,7 @@ public class HitObject {
 		}
 
 		s.addQuotesToHS();
-		if (!s.toString().contains(".wav")){
+		if (s.gethitSound().isEmpty()){
 			System.err.println("Failed to convert HitObject to Sample");
 			System.err.println(toString());
 			System.err.println(s.toString());
