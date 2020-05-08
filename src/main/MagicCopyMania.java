@@ -114,11 +114,8 @@ public class MagicCopyMania implements Runnable {
 						// keysound = true then copy to SB, else do nothing
 						for (int j = 0; j < sourceSize; j++) {
 							HitObject source_ho = sourceChord.get(j);
-							if (source_ho.toSample().toString().contains(".wav")) {
-								List_Samples.add(source_ho.toSample());
-							}
+							List_Samples.add(source_ho.toSample());
 						}
-
 					}
 
 				} else {
