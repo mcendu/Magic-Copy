@@ -34,7 +34,7 @@ import javax.imageio.stream.ImageInputStream;
 public class OsuUtils {
 	
 	//Constants
-	public final static String nl = System.getProperty("line.separator");
+	public final static String nl = "\015\012"; // beatmap files always follow CRLF convention.
 	public final static String format = "%.4f";
 	//private static int SUPPORTED_OSU_FILE_VERSION=14;
 	private static int SUPPORTED_PLAY_MODE = 3; // Osu!mania only
