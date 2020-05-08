@@ -37,7 +37,7 @@ public class GUI extends JFrame {
 	private String defaultPath = "C:/Program Files (x86)/osu!/Songs";
 	private String startPath = System.getProperty("user.dir");
 	private final String propertyName = "Magic Copy config.properties";
-	private final String version = "v2020-04-12";
+	private final String version = "v2020-05-08";
 	// Variables
 	private File inputFile;
 	private File outputFile;
@@ -65,7 +65,7 @@ public class GUI extends JFrame {
 	 */
 	public GUI() {
 		readFromProperty(startPath);
-		setTitle("Magic Copy by DH " + version );
+		setTitle("Magic Copy by DH (McEndu's fork) " + version );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 767, 241);
 		contentPane = new JPanel();
